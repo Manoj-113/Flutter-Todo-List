@@ -47,6 +47,7 @@ void main() =>
                   onChanged: (String value){
                     input = value;
                   },
+                ),
                   actions: <Widget>[
                     FlatButton(onPressed: (){
                       setState(() {
