@@ -5,8 +5,8 @@ void main() =>
     debugShowCheckedModeBanner: false,
     theme: ThemeData (
     brightness: Brightness.light,
-    primaryColor: blue,
-    accentColor: Color.orange),
+    primaryColor: Colors.blue,
+    accentColor: Colors.orange),
     home: MyApp(),
     ));
 
@@ -16,6 +16,7 @@ void main() =>
     }
     
     class _MyAppState extends State<MyApp> {
+      List todos = List();
 
 
       @override
