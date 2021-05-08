@@ -55,7 +55,7 @@ void main() =>
                       });
                     }, child: Text("Add"))
                   ]
-                ),
+                
               );
             });
           },child: Icon(Icons.add,
