@@ -25,6 +25,8 @@ void main() =>
     super.initState();
     todos.add("Item1");
     todos.add("Item2");
+    todos.add("Item3");
+    todos.add("Item4");
   }
 
       @override
