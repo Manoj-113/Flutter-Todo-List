@@ -67,8 +67,9 @@ void main() =>
               return Dismissible(
                 key: Key(todos[index]), 
                 child: Card(
+                  margin: EdgeInsets.all(8),
                   shape: RoundedRectangleBorder(borderRadius: 
-                  BorderRadius.circular(16)),
+                  BorderRadius.circular(8)),
                   child: ListTile(
                     title: Text(todos[index]),
                     trailing: IconButton(icon: Icon(Icons.delete, color: Colors.red,),onPressed: (){},),
