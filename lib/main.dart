@@ -55,7 +55,7 @@ void main() =>
                       });
                     }, child: Text("Add"))
                   ]
-                
+
               );
             });
           },child: Icon(Icons.add,
@@ -67,8 +67,11 @@ void main() =>
               return Dismissible(
                 key: Key(todos[index]), 
                 child: Card(
+                  shape: RoundedRectangleBorder(borderRadius: 
+                  BorderRadius.circular(16)),
                   child: ListTile(
                     title: Text(todos[index]),
+                    trailing: IconButton(icon: Icon(Icons.delete, color: Colors.red,),onPressed: (){},),
                 ),
               ));
             }),
