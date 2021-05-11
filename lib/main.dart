@@ -42,6 +42,8 @@ void main() =>
             builder:
             (BuildContext context){
               return AlertDialog(
+                shape: RoundedRectangleBorder(borderRadius: 
+                BorderRadius.circular(8)),
                 title: Text("Add Todolist"),
                 content: TextField(
                   onChanged: (String value){
