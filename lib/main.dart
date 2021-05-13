@@ -70,9 +70,36 @@ void main() =>
           },child: Icon(Icons.add,
           color: Colors.white,),
           ),
-          body:StreamBuilder(stream: Firestore.instance.collection("MyTodos").snapshots().builder: (context, snapshots){
-            return;
-          },
+          body:StreamBuilder(stream: Firestore.instance.collection("MyTodos").snapshots(),builder: (context, snapshots){
+            return ListView.builder{
+              itemCount:snapshots.data.documets.length,
+              itemBuilder: (context,index){
+                return Dismissible{
+                  key:key(todos[index]),
+                  child:Card(
+                    elevation: 4,
+                    margin: EdgeInsets.all(8),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                      child: ListTitle(
+                        title: Text(snapshots.data["todoTitle"]),
+                        trailing: IconButton(
+                          icon: Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                          ),
+                           onPressed:(){
+                             setState(() {
+                               todos.removeAt(index);
+                             });
+                           }),
+                      ),
+                    )
+                  )
+                }
+              }
+            }
+          }),
           
         );
       }
