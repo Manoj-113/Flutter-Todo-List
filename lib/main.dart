@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() => 
@@ -19,16 +21,22 @@ void main() =>
       List todos = List();
       String input = "";
 
+      createTodos(){
+        DocumentReference documentReference = Firestore.instance.collection("MyTodos").document(input);
+      }
 
-      @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    todos.add("Item1");
-    todos.add("Item2");
-    todos.add("Item3");
-    todos.add("Item4");
-  }
+      Map<String,String> todos = {"todoTitle":input};
+
+      docmentReference.setData(todos).whenComplete((){
+        print("$input created")
+      });
+
+
+      deleteTodos(){
+
+      }
+
+
 
       @override
       Widget build(BuildContext context) {
@@ -52,9 +60,7 @@ void main() =>
                 ),
                   actions: <Widget>[
                     FlatButton(onPressed: (){
-                      setState(() {
-                        todos.add(input);
-                      });
+                      createTodos();
                       Navigator.of(context).pop();
                     }, child: Text("Add"))
                   ]
@@ -64,26 +70,9 @@ void main() =>
           },child: Icon(Icons.add,
           color: Colors.white,),
           ),
-          body: ListView.builder(
-            itemCount: todos.length,
-            itemBuilder: (BuildContext context, int index){
-              return Dismissible(
-                key: Key(todos[index]), 
-                child: Card(
-                  elevation: 4,
-                  margin: EdgeInsets.all(8),
-                  shape: RoundedRectangleBorder(borderRadius: 
-                  BorderRadius.circular(8)),
-                  child: ListTile(
-                    title: Text(todos[index]),
-                    trailing: IconButton(icon: Icon(Icons.delete, color: Colors.red,),onPressed: (){
-                      setState(() {
-                        todos.remove(index);
-                      });
-                    },),
-                ),
-              ));
-            }),
+          body:StreamBuilder(stream: Firestore.instance.collection("MyTodos").snapshots().builder: (context, snapshots){
+            return;
+          },
           
         );
       }
